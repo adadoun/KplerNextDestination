@@ -111,18 +111,10 @@ These notebooks provide a comprehensive view of our modeling process, from basel
 
 ## Execution Instructions
 
-1. Ensure you have access to the BigQuery project and necessary datasets.
-2. Execute the SQL scripts in the order specified in the [Transformation Steps](#transformation-steps) section.
-3. After data preparation, explore the data using the notebooks in the `EDA_Notebooks/` folder.
+1. Ensure you have access to the necessary datasets that are shared in Google Drive.
+2. Explore the data using the notebooks in the `EDA_Notebooks/` folder.
 4. Run the model prototype notebooks in the `Models_Notebooks/` folder to train and evaluate different prediction models.
 
-## Data Quality Checks
-
-[Content remains the same as in the previous version]
-
-## Performance Considerations
-
-[Content remains the same as in the previous version]
 
 ## Troubleshooting
 

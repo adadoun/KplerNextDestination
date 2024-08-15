@@ -1,7 +1,7 @@
 # KplerNextDestination
 
 
-# BigQuery Data Transformation Process and Vessel Destination Prediction
+# BigQuery Data Transformation Process - Python Notebook Data Exploration with Plotly -  Vessel Destination Prediction Prototypes with NN
 
 This repository contains the SQL scripts, Jupyter notebooks, and documentation for our data exploration, transformation process using BigQuery and the subsequent vessel destination prediction models.
 

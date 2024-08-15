@@ -50,7 +50,7 @@ Our data transformation process follows these main stages:
 
 This step involves cleaning the raw data, handling multiple products per trade, defining voyages, and creating a temporal split for train and test sets.
 
-![Train/Test Split](images/train_test_split.png)
+![Train/Test Split](images/Train_Test_Split.png)
 
 ### 2. Feature Engineering
 
@@ -59,8 +59,6 @@ This step involves cleaning the raw data, handling multiple products per trade, 
 - Output: Trades data with additional engineered features
 
 This step creates new features such as temporal features, voyage sequencing, historical port visits, and distance calculations.
-
-![Feature Engineering](images/feature_engineering.png)
 
 ### 3. Probability Calculations
 
@@ -74,7 +72,7 @@ This step creates new features such as temporal features, voyage sequencing, his
 
 These scripts calculate rolling window probabilities for destination prediction at various levels of specificity.
 
-![Probability Calculations](images/probability_calculations.png)
+![Probability Calculations](images/Agg_Features.png)
 
 ### 4. Final Data Aggregation
 
@@ -87,7 +85,7 @@ These scripts calculate rolling window probabilities for destination prediction 
 
 This step combines all the processed data and calculated probabilities into a final dataset.
 
-![Final Aggregation](images/final_aggregation.png)
+![Final Aggregation](images/Train_Test_Data_Prep.png)
 ## Jupyter Notebooks
 
 ### Exploratory Data Analysis (EDA_Notebooks)
@@ -95,20 +93,19 @@ This step combines all the processed data and calculated probabilities into a fi
 The `EDA_Notebooks/` folder contains Jupyter notebooks used for initial data exploration and analysis. These notebooks provide insights into the dataset's characteristics, distributions, and potential features for our prediction models.
 
 Key notebooks:
-- `01_Data_Overview.ipynb`: Initial exploration of the dataset structure and basic statistics
-- `02_Temporal_Analysis.ipynb`: Analysis of temporal patterns in vessel movements
-- `03_Spatial_Analysis.ipynb`: Exploration of geographical aspects of vessel routes
-- `04_Feature_Relationships.ipynb`: Investigation of relationships between different features
+- `EDATradesProcessed.ipynb`: Exploration on final version of trades data
+- `EDATrades.ipynb`: Exploration on joined trades data with vessels and port calls
+- `EDA_PortCallsPart2.ipynb`: Second part of port calls exploration
+- `EDA_PortCallsPart1.ipynb`: First part of port calls exploration
 
 ### Model Prototypes (Models_Notebooks)
 
 The `Models_Notebooks/` folder contains Jupyter notebooks that implement and evaluate different approaches to vessel destination prediction.
 
 Key notebooks:
-- `01_Statistical_Model.ipynb`: Implementation of the baseline statistical model using historical probabilities
-- `02_LGBM_Model.ipynb`: Development and evaluation of a Light Gradient Boosting Machine model
-- `03_Neural_Network_Model.ipynb`: Implementation of a neural network model with embedding layers
-- `04_Model_Comparison.ipynb`: Comparative analysis of all implemented models
+- `AssociationRuleTechnique.ipynb`: Implementation of the baseline statistical model using historical probabilities and evaluation
+- `lgbmDestinationProbability.ipynb`: Development and evaluation of a Light Gradient Boosting Machine model and evaluation
+- `NNDestinationProbabilityPrediction.ipynb`: Implementation of a neural network model with embedding layers and evaluation
 
 These notebooks provide a comprehensive view of our modeling process, from baseline approaches to more sophisticated machine learning techniques.
 

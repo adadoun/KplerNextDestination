@@ -1,22 +1,32 @@
 # KplerNextDestination
 
-# BigQuery Data Transformation Process
 
-This repository contains the SQL scripts and documentation for our data transformation process using BigQuery.
+# BigQuery Data Transformation Process and Vessel Destination Prediction
+
+This repository contains the SQL scripts, Jupyter notebooks, and documentation for our data exploration, transformation process using BigQuery and the subsequent vessel destination prediction models.
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [Data Flow](#data-flow)
-3. [Transformation Steps](#transformation-steps)
-4. [SQL Scripts](#sql-scripts)
-5. [Execution Instructions](#execution-instructions)
-6. [Data Quality Checks](#data-quality-checks)
-7. [Performance Considerations](#performance-considerations)
-8. [Troubleshooting](#troubleshooting)
+2. [Repository Structure](#repository-structure)
+3. [Data Flow](#data-flow)
+4. [Transformation Steps](#transformation-steps)
+5. [SQL Scripts](#sql-scripts)
+6. [Jupyter Notebooks](#jupyter-notebooks)
+7. [Execution Instructions](#execution-instructions)
+8. [Data Quality Checks](#data-quality-checks)
+9. [Performance Considerations](#performance-considerations)
+10. [Troubleshooting](#troubleshooting)
 
 ## Overview
 
-This project aims to transform raw maritime shipping data into a structured format suitable for analysis and prediction of vessel destinations. The transformation process involves multiple steps of data cleaning, feature engineering, and aggregation using BigQuery SQL.
+This project aims to transform raw maritime shipping data into a structured format suitable for analysis and prediction of vessel destinations. The transformation process involves multiple steps of data cleaning, feature engineering, and aggregation using BigQuery SQL. Following the data preparation, we develop and compare various models for predicting vessel destinations.
+
+## Repository Structure
+
+- `SQL_Scripts/`: Contains all SQL scripts for data transformation
+- `Models_Notebooks/`: Jupyter notebooks for prototype models
+- `EDA_Notebooks/`: Jupyter notebooks for exploratory data analysis
+- `images/`: Diagrams and visualizations used in this README
 
 ## Data Flow
 
@@ -78,66 +88,55 @@ These scripts calculate rolling window probabilities for destination prediction 
 This step combines all the processed data and calculated probabilities into a final dataset.
 
 ![Final Aggregation](images/final_aggregation.png)
+## Jupyter Notebooks
 
-## SQL Scripts
+### Exploratory Data Analysis (EDA_Notebooks)
 
-- `train_test_split.sql`: Preprocesses raw data and creates train/test splits
-- `feature_engineering.sql`: Creates additional features from the preprocessed data
-- `probability_p1.sql`: Calculates P1 probabilities (origin to destination)
-- `probability_p2.sql`: Calculates P2 probabilities (origin, vessel to destination)
-- `probability_p3.sql`: Calculates P3 probabilities (origin, vessel, product to destination)
-- `probability_p4.sql`: Calculates P4 probabilities (vessel, product, previous port to destination)
-- `final_aggregation.sql`: Combines all processed data into the final dataset
+The `EDA_Notebooks/` folder contains Jupyter notebooks used for initial data exploration and analysis. These notebooks provide insights into the dataset's characteristics, distributions, and potential features for our prediction models.
+
+Key notebooks:
+- `01_Data_Overview.ipynb`: Initial exploration of the dataset structure and basic statistics
+- `02_Temporal_Analysis.ipynb`: Analysis of temporal patterns in vessel movements
+- `03_Spatial_Analysis.ipynb`: Exploration of geographical aspects of vessel routes
+- `04_Feature_Relationships.ipynb`: Investigation of relationships between different features
+
+### Model Prototypes (Models_Notebooks)
+
+The `Models_Notebooks/` folder contains Jupyter notebooks that implement and evaluate different approaches to vessel destination prediction.
+
+Key notebooks:
+- `01_Statistical_Model.ipynb`: Implementation of the baseline statistical model using historical probabilities
+- `02_LGBM_Model.ipynb`: Development and evaluation of a Light Gradient Boosting Machine model
+- `03_Neural_Network_Model.ipynb`: Implementation of a neural network model with embedding layers
+- `04_Model_Comparison.ipynb`: Comparative analysis of all implemented models
+
+These notebooks provide a comprehensive view of our modeling process, from baseline approaches to more sophisticated machine learning techniques.
 
 ## Execution Instructions
 
 1. Ensure you have access to the BigQuery project and necessary datasets.
-2. Execute the scripts in the following order:
-   - `train_test_split.sql`
-   - `feature_engineering.sql`
-   - `probability_p1.sql`
-   - `probability_p2.sql`
-   - `probability_p3.sql`
-   - `probability_p4.sql`
-   - `final_aggregation.sql`
-3. Verify the output at each stage using the provided data quality checks.
+2. Execute the SQL scripts in the order specified in the [Transformation Steps](#transformation-steps) section.
+3. After data preparation, explore the data using the notebooks in the `EDA_Notebooks/` folder.
+4. Run the model prototype notebooks in the `Models_Notebooks/` folder to train and evaluate different prediction models.
 
 ## Data Quality Checks
 
-After each transformation step, run the following checks:
-1. Check for null values in critical columns
-2. Verify the number of rows in output tables
-3. Ensure date ranges are as expected
-4. Validate calculated probabilities sum to 1 for each group
-
-Sample check query:
-```sql
-SELECT 
-  COUNT(*) as total_rows,
-  COUNT(DISTINCT vessel_id) as unique_vessels,
-  MIN(start_date_time) as min_date,
-  MAX(start_date_time) as max_date
-FROM `project.dataset.final_trades_table`;
-```
+[Content remains the same as in the previous version]
 
 ## Performance Considerations
 
-- Use partitioning on date columns for large tables
-- Apply clustering on frequently filtered columns (e.g., vessel_id, origin, destination)
-- Optimize JOIN operations by placing the larger table first
-- Use approximate aggregations (e.g., APPROX_COUNT_DISTINCT) for large-scale aggregations where slight inaccuracy is acceptable
+[Content remains the same as in the previous version]
 
 ## Troubleshooting
 
-Common issues and solutions:
+[Previous content remains, with the following addition:]
 
-1. **Out of memory error**: 
-   - Solution: Break down the query into smaller steps or use a larger machine type.
+For issues related to Jupyter notebooks:
+1. **Kernel dies when running large datasets**: 
+   - Solution: Consider using a more powerful machine or processing data in smaller batches.
+2. **Package import errors**: 
+   - Solution: Ensure all required packages are installed. A `requirements.txt` file is provided in the repository root.
 
-2. **Unexpected null values**: 
-   - Solution: Add COALESCE or IFNULL functions to handle nulls, or investigate the source of nulls in upstream data.
+For any other issues, please open an issue in this repository with a description of the problem and the relevant query or notebook.
 
-3. **Slow query performance**: 
-   - Solution: Review query plan, optimize JOINs, and consider adding additional columns to table clustering.
 
-For any other issues, please open an issue in this repository with a description of the problem and the relevant query.

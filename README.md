@@ -38,7 +38,7 @@ Our data transformation process follows these main stages:
 4. Aggregation and Merging
 5. Final Output Preparation
 
-![Data Flow Diagram](images/data_flow_diagram.png)
+![Data Flow Diagram](images/Data_Preprocessing.png)
 
 ## Transformation Steps
 

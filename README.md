@@ -6,6 +6,17 @@ The reposittory tackles three different tasks for building a vessel destination 
 * Python Notebooks for Data Exploration with Plotly
 * Python Notebooks for Data Vessel Destination Prediction Prototypes with NN
 
+
+ Neural Network approach outperforms the other approaches, especially comparing to lgbm approach as presented below:
+
+![Comparison_Table](images/Comparison_Table.png)
+
+Below, you can see the evolution of accuracy for different values of k in the top-k prediction:
+
+
+![Topk_Acc](images/Topk_Acc.png)
+
+ 
 This repository contains the SQL scripts, Jupyter notebooks, and documentation for our data exploration, transformation process using BigQuery and the subsequent vessel destination prediction models.
 
 ## Table of Contents

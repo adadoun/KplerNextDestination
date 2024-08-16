@@ -1,31 +1,19 @@
 # KplerNextDestination
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Repository Structure](#repository-structure)
+3. [Data Flow](#data-flow)
+4. [Transformation Steps](#transformation-steps)
+5. [SQL Scripts](#sql-scripts)
+6. [Jupyter Notebooks](#jupyter-notebooks)
+7. [Execution Instructions](#execution-instructions)
+8. [Data Quality Checks](#data-quality-checks)
+9. [Performance Considerations](#performance-considerations)
+10. [Troubleshooting](#troubleshooting)
 
 ## Overview
 KplerNextDestination is a project focused on predicting vessel destinations in maritime shipping. Using advanced data analysis techniques and machine learning models, this project aims to improve the accuracy of next port predictions, enhancing logistics planning and operational efficiency in the maritime industry.
-
-## Repository Structure
-- `EDA_Notebooks/`: Exploratory Data Analysis notebooks -> In order to visualize output cells, one needs to click on "open collab" button as suggested
-  - `EDATrades.ipynb`: Analysis of trade data
-  - `EDATradesProcessed.ipynb`: Analysis of processed trade data
-  - `EDA_PortCallsPart1.ipynb`: Port calls analysis (Part 1)
-  - `EDA_PortCallsPart2.ipynb`: Port calls analysis (Part 2)
-
-- `Models_Notebooks/`: Model development and evaluation notebooks -> In order to visualize output cells, one needs to click on "open collab" button as suggested
-  - `AssociationRuleTechnique.ipynb`: Implementation of association rule techniques
-  - `NNDestinationProbabilityPrediction.ipynb`: Neural Network model for destination probability prediction
-  - `lgbmDestinationProbability.ipynb`: LightGBM model for destination probability prediction
-
-- `SQL_Data_Transformation/`: SQL scripts for data processing and feature engineering
-  - `Agg_Features/`: Aggregated feature generation
-  - `Data_Processing/`: Data cleaning and preprocessing
-  - `Train_Test_Data_Preparation/`: Preparation of training and test datasets
-  - `Train_Test_Split/`: Scripts for splitting data into training and test sets
-
-- `Report/`: Project documentation and final report
-
-- `images/`: Visualizations and diagrams used in the project
-
 
 The project tackles three different tasks for building a vessel destination prediction prototype:
 
@@ -49,18 +37,34 @@ Below, you can see the evolution of accuracy for different values of k in the to
 
  
 This repository contains the SQL scripts, Jupyter notebooks, and documentation for our data exploration, transformation process using BigQuery and the subsequent vessel destination prediction models.
+To collect the data you should use the shared Google Drive link.
+In order to run notebooks, you should use Google Colab, 
+as it is the only way to visualize the output cells. If you would like to run the code locally,
+you should install the necessary packages using the requirements.txt file provided in the repository root.
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Repository Structure](#repository-structure)
-3. [Data Flow](#data-flow)
-4. [Transformation Steps](#transformation-steps)
-5. [SQL Scripts](#sql-scripts)
-6. [Jupyter Notebooks](#jupyter-notebooks)
-7. [Execution Instructions](#execution-instructions)
-8. [Data Quality Checks](#data-quality-checks)
-9. [Performance Considerations](#performance-considerations)
-10. [Troubleshooting](#troubleshooting)
+
+
+## Repository Structure
+- `EDA_Notebooks/`: Exploratory Data Analysis notebooks -> In order to visualize output cells, one needs to click on "open collab" button as suggested
+  - `EDATrades.ipynb`: Analysis of trade data
+  - `EDATradesProcessed.ipynb`: Analysis of processed trade data
+  - `EDA_PortCallsPart1.ipynb`: Port calls analysis (Part 1)
+  - `EDA_PortCallsPart2.ipynb`: Port calls analysis (Part 2)
+
+- `Models_Notebooks/`: Model development and evaluation notebooks -> In order to visualize output cells, one needs to click on "open collab" button as suggested
+  - `AssociationRuleTechnique.ipynb`: Implementation of association rule techniques
+  - `NNDestinationProbabilityPrediction.ipynb`: Neural Network model for destination probability prediction
+  - `lgbmDestinationProbability.ipynb`: LightGBM model for destination probability prediction
+
+- `SQL_Data_Transformation/`: SQL scripts for data processing and feature engineering
+  - `Agg_Features/`: Aggregated feature generation
+  - `Data_Processing/`: Data cleaning and preprocessing
+  - `Train_Test_Data_Preparation/`: Preparation of training and test datasets
+  - `Train_Test_Split/`: Scripts for splitting data into training and test sets
+
+- `Report/`: Project documentation and final report
+
+- `images/`: Visualizations and diagrams used in the project
 
 
 ## Data Flow

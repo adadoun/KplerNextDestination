@@ -8,7 +8,7 @@ train_set AS (
   SELECT * EXCEPT(start_date_time, end_date_time),
          TIMESTAMP(start_date_time) AS start_date_time,
          TIMESTAMP(end_date_time) AS end_date_time
-  FROM `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_trades_bq_preprocessed`
+  FROM `trades_bq_preprocessed`
   WHERE DATE(TIMESTAMP(end_date_time)) <= (SELECT train_end_date FROM cut_off_date)
 ),
 
@@ -23,7 +23,7 @@ potential_test_set AS (
   SELECT * EXCEPT(start_date_time, end_date_time),
          TIMESTAMP(start_date_time) AS start_date_time,
          TIMESTAMP(end_date_time) AS end_date_time
-  FROM `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_trades_bq_preprocessed`
+  FROM `trades_bq_preprocessed`
   WHERE TIMESTAMP(start_date_time) > (SELECT max_end_date FROM max_train_date)
 ),
 

@@ -4,7 +4,7 @@ WITH
     *,
     DATE_TRUNC(TIMESTAMP(end_date_time), WEEK) AS week
   FROM
-    `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_train_trades_bq` ),
+    `train_trades_bq` ),
 
 weekly_data AS (
   SELECT DISTINCT

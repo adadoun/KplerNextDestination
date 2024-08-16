@@ -3,7 +3,7 @@ WITH train_data AS (
     *,
     DATE_TRUNC(timestamp(start_date_time), WEEK) AS agg_stop_ts
   FROM
-    `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_test_trades_bq_prepared`
+    `test_trades_bq_prepared`
 )
 SELECT
   t.*,
@@ -26,7 +26,7 @@ LEFT JOIN
 	(select
         *
         from
-  			`dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_p4_association_rules`
+  			`p4_association_rules`
         qualify row_number() over(partition by vessel_id, product_family, destination, previous_visited_port_1 order by agg_stop_ts desc) = 1
         ) as p4
   ON t.vessel_id = p4.vessel_id
@@ -37,7 +37,7 @@ LEFT JOIN
 	(select
         *
         from
-  			`dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_p3_association_rules`
+  			`p3_association_rules`
         qualify row_number() over(partition by vessel_id, origin, destination, product_family order by agg_stop_ts desc) = 1
         ) as p3
   ON 
@@ -49,7 +49,7 @@ LEFT JOIN
 	(select
         *
         from
-  			`dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_p2_association_rules`
+  			`p2_association_rules`
         qualify row_number() over(partition by vessel_id, origin, destination order by agg_stop_ts desc) = 1
         ) as p2
   ON t.origin = p2.origin
@@ -59,19 +59,19 @@ LEFT JOIN
 		(select
         *
         from
-  			`dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_p1_association_rules` 
+  			`p1_association_rules` 
         qualify row_number() over(partition by origin, destination order by agg_stop_ts desc) = 1
         ) as p1
 	ON
   	t.origin = p1.origin
   AND t.destination = p1.destination
 LEFT JOIN 
-  `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_od_distance` od_distance
+  `od_distance` od_distance
   ON t.origin = od_distance.origin
   AND t.destination = od_distance.destination
 LEFT JOIN
   (SELECT `origin_h3_res2_index`, `destination_h3_res2_index`, avg(`od_distance`) as h3_od_distance
-   FROM `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_od_distance`
+   FROM `od_distance`
    GROUP BY `origin_h3_res2_index`, `destination_h3_res2_index`) as h3_od_distance
   ON t.origin_h3_res2_index = h3_od_distance.origin_h3_res2_index
   AND t.destination_h3_res2_index = h3_od_distance.destination_h3_res2_index

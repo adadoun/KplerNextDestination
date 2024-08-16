@@ -1,7 +1,7 @@
 WITH temp AS (
     SELECT 
         *
-    FROM `dev-shippeo-core-1364.dataiku_managed.design_DATA_EXP_trades_bq_joined`
+    FROM `trades_bq_joined`
     QUALIFY row_number() OVER (PARTITION BY vessel_id, CAST(voyage_number AS INT), destination ORDER BY `end_date_time` ASC) = 1
     AND row_number() OVER (PARTITION BY vessel_id, port_call_destination_id, destination ORDER BY `start_date_time` DESC) = 1
     AND origin <> destination
@@ -9,8 +9,8 @@ WITH temp AS (
 temp_2 AS (
     SELECT
         * EXCEPT(voyage_number, `origin_country_geography`, `destination_country_geography`),
-    	`data-shippeo-cartodb-412c.h3.LONGLAT_ASH3`(ST_X(ST_GEOGFROM(`origin_geo_point`)), ST_Y(ST_GEOGFROM(`origin_geo_point`)), 2) AS origin_h3_res2_index,
-    	`data-shippeo-cartodb-412c.h3.LONGLAT_ASH3`(ST_X(ST_GEOGFROM(`destination_geo_point`)), ST_Y(ST_GEOGFROM(`destination_geo_point`)), 2) AS destination_h3_res2_index,
+    	`h3.LONGLAT_ASH3`(ST_X(ST_GEOGFROM(`origin_geo_point`)), ST_Y(ST_GEOGFROM(`origin_geo_point`)), 2) AS origin_h3_res2_index,
+    	`h3.LONGLAT_ASH3`(ST_X(ST_GEOGFROM(`destination_geo_point`)), ST_Y(ST_GEOGFROM(`destination_geo_point`)), 2) AS destination_h3_res2_index,
         ST_ASTEXT(ST_MAKELINE(ST_GEOGFROM(origin_geo_point), ST_GEOGFROM(destination_geo_point))) AS `od_linestring`,
         CAST(distance AS INT)/1000 AS `distance_kms`,
         IF(LAG(destination) OVER(PARTITION BY vessel_id ORDER BY end_date_time ASC) IS NULL,

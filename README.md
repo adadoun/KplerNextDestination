@@ -33,6 +33,10 @@ The project tackles three different tasks for building a vessel destination pred
 * Python Notebooks for Data Exploration with Plotly
 * Python Notebooks for Data Vessel Destination Prediction Prototypes with NN
 
+We propose an neuronal approach to tackle the problem of Next Destination Prediction for Vessels:
+
+![Neural_Network](images/Neural_Network.png)
+
 
 Neural Network approach outperforms the other approaches, especially comparing to lgbm approach as presented below:
 

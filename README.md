@@ -6,10 +6,10 @@ Overview
 KplerNextDestination is a project focused on predicting vessel destinations in maritime shipping. Using advanced data analysis techniques and machine learning models, this project aims to improve the accuracy of next port predictions, enhancing logistics planning and operational efficiency in the maritime industry.
 Repository Structure
 
-EDA_Notebooks/: Exploratory Data Analysis notebooks
+* EDA_Notebooks/: Exploratory Data Analysis notebooks
 
-EDATrades.ipynb: Analysis of trade data
-EDATradesProcessed.ipynb: Analysis of processed trade data
+** EDATrades.ipynb: Analysis of trade data
+** EDATradesProcessed.ipynb: Analysis of processed trade data
 EDA_PortCallsPart1.ipynb: Port calls analysis (Part 1)
 EDA_PortCallsPart2.ipynb: Port calls analysis (Part 2)
 

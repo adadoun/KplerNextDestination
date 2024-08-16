@@ -1,47 +1,40 @@
 # KplerNextDestination
 
 
-Overview
-
+## Overview
 KplerNextDestination is a project focused on predicting vessel destinations in maritime shipping. Using advanced data analysis techniques and machine learning models, this project aims to improve the accuracy of next port predictions, enhancing logistics planning and operational efficiency in the maritime industry.
-Repository Structure
 
-* EDA_Notebooks/: Exploratory Data Analysis notebooks
+## Repository Structure
+- `EDA_Notebooks/`: Exploratory Data Analysis notebooks
+  - `EDATrades.ipynb`: Analysis of trade data
+  - `EDATradesProcessed.ipynb`: Analysis of processed trade data
+  - `EDA_PortCallsPart1.ipynb`: Port calls analysis (Part 1)
+  - `EDA_PortCallsPart2.ipynb`: Port calls analysis (Part 2)
 
-** EDATrades.ipynb: Analysis of trade data
-** EDATradesProcessed.ipynb: Analysis of processed trade data
-EDA_PortCallsPart1.ipynb: Port calls analysis (Part 1)
-EDA_PortCallsPart2.ipynb: Port calls analysis (Part 2)
+- `Models_Notebooks/`: Model development and evaluation notebooks
+  - `AssociationRuleTechnique.ipynb`: Implementation of association rule techniques
+  - `NNDestinationProbabilityPrediction.ipynb`: Neural Network model for destination probability prediction
+  - `lgbmDestinationProbability.ipynb`: LightGBM model for destination probability prediction
 
+- `SQL_Data_Transformation/`: SQL scripts for data processing and feature engineering
+  - `Agg_Features/`: Aggregated feature generation
+  - `Data_Processing/`: Data cleaning and preprocessing
+  - `Train_Test_Data_Preparation/`: Preparation of training and test datasets
+  - `Train_Test_Split/`: Scripts for splitting data into training and test sets
 
-Models_Notebooks/: Model development and evaluation notebooks
+- `Report/`: Project documentation and final report
 
-AssociationRuleTechnique.ipynb: Implementation of association rule techniques
-NNDestinationProbabilityPrediction.ipynb: Neural Network model for destination probability prediction
-lgbmDestinationProbability.ipynb: LightGBM model for destination probability prediction
-
-
-SQL_Data_Transformation/: SQL scripts for data processing and feature engineering
-
-Agg_Features/: Aggregated feature generation
-Data_Processing/: Data cleaning and preprocessing
-Train_Test_Data_Preparation/: Preparation of training and test datasets
-Train_Test_Split/: Scripts for splitting data into training and test sets
-
-
-Report/: Project documentation and final report
-images/: Visualizations and diagrams used in the project
+- `images/`: Visualizations and diagrams used in the project
 
 
-
-The reposittory tackles three different tasks for building a vessel destination prediction prototype:
+The project tackles three different tasks for building a vessel destination prediction prototype:
 
 * BigQuery Data Transformation Process 
 * Python Notebooks for Data Exploration with Plotly
 * Python Notebooks for Data Vessel Destination Prediction Prototypes with NN
 
 
- Neural Network approach outperforms the other approaches, especially comparing to lgbm approach as presented below:
+Neural Network approach outperforms the other approaches, especially comparing to lgbm approach as presented below:
 
 ![Comparison_Table](images/Comparison_Table.png)
 

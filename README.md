@@ -58,16 +58,6 @@ This repository contains the SQL scripts, Jupyter notebooks, and documentation f
 9. [Performance Considerations](#performance-considerations)
 10. [Troubleshooting](#troubleshooting)
 
-## Overview
-
-This project aims to transform raw maritime shipping data into a structured format suitable for analysis and prediction of vessel destinations. The transformation process involves multiple steps of data cleaning, feature engineering, and aggregation using BigQuery SQL. Following the data preparation, we develop and compare various models for predicting vessel destinations.
-
-## Repository Structure
-
-- `SQL_Scripts/`: Contains all SQL scripts for data transformation
-- `Models_Notebooks/`: Jupyter notebooks for prototype models
-- `EDA_Notebooks/`: Jupyter notebooks for exploratory data analysis
-- `images/`: Diagrams and visualizations used in this README
 
 ## Data Flow
 
@@ -95,7 +85,6 @@ This step involves cleaning the raw data, handling multiple products per trade, 
 
 ### 2. Feature Engineering
 
-- SQL Script: `feature_engineering.sql`
 - Input: Preprocessed trades data
 - Output: Trades data with additional engineered features
 
@@ -103,11 +92,6 @@ This step creates new features such as temporal features, voyage sequencing, his
 
 ### 3. Probability Calculations
 
-- SQL Scripts: 
-  - `probability_p1.sql`
-  - `probability_p2.sql`
-  - `probability_p3.sql`
-  - `probability_p4.sql`
 - Input: Preprocessed trades data
 - Output: Probability tables for different levels of granularity
 
@@ -117,11 +101,6 @@ These scripts calculate rolling window probabilities for destination prediction 
 
 ### 4. Final Data Aggregation
 
-- SQL Script: `final_aggregation.sql`
-- Input: 
-  - Preprocessed trades data
-  - Engineered features
-  - Probability tables
 - Output: Final dataset ready for model training
 
 This step combines all the processed data and calculated probabilities into a final dataset.

@@ -69,7 +69,18 @@ you should install the necessary packages using the requirements.txt file provid
 
 ## Data Flow
 
-Our data transformation process follows these main stages:
+In order to have access to the raw data and also the different produced data throughout the SQL Transformation pipeline, one should use the provided google Drive link.
+In the provided Data Folder, one would find the following datasets:
+- Provided dataset by Kpler: `vessels.csv` | `port_calls.csv` | `trades.csv`
+- [World Administrative Boundaries](https://public.opendatasoft.com/explore/dataset/world-administrative-boundaries/export/) : `country_boundaries.csv`
+- Port calls containing vessels information : `port_calls_with_vessels.csv`
+- Trades Data After Joining with vessels, port_calls and also country boundaries data: `trades_csv_joined.csv`
+- Trades Data After Processing steps (as explained in the [report](https://github.com/adadoun/KplerNextDestination/blob/main/Report/Report_Next_Destination_Prediction.pdf)): `trades_csv_processed.csv`
+- Train/Test Trades Data after performing the last joint operation to get probabilities data on origin/destination transitions and feature engineering: `train_trades_csv_prepared.csv` | `test_trades_csv_prepared.csv`
+
+By looking at the produced datasets in the Data flow, you will find the corresponding SQL scriptis that was executed to build the dataset in [SQL Data Transformation](https://github.com/adadoun/KplerNextDestination/tree/main/SQL_Data_Transformation). For example, the script of the dataset `port_calls_enriched_bq` produced, can be found in the file named: `compute_port_calls_enriched_bq.sql` [here](https://github.com/adadoun/KplerNextDestination/blob/main/SQL_Data_Transformation/Data_Processing/compute_port_calls_enriched_bq.sql)
+
+Our data transformation process follows these main stages. b
 
 1. Data Ingestion
 2. Data Cleaning and Preprocessing
